@@ -14,7 +14,8 @@ show: $(BUILDOUT_BIN)
 	$(BUILDOUT_BIN) annotate
 
 test: bin/code-analysis bin/pybot
-	# bin/pybot -d test
+	bin/code-analysis
+	bin/pybot tests
 
 watch: bin/instance
 	bin/instance fg
