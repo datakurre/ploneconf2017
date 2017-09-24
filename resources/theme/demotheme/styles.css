@@ -1,0 +1,5 @@
+@import "../++theme++barceloneta/less/barceloneta-compiled.css";
+
+body {
+    background: pink;
+}

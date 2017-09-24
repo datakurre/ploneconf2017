@@ -1,0 +1,4 @@
+# ./bin/pybot -A tests/argumentfile tests/test_fragment.robot
+--variable ZOPE_PORT:8080
+--variable PLONE_SITE_ID:Plone
+--variable PASSWORD:admin
