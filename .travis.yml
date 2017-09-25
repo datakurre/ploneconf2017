@@ -8,3 +8,5 @@ script:
 cache:
   directories:
   - eggs
+env:
+- ROBOT_BROWSER=phantomjs

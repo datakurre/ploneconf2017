@@ -1,4 +1,5 @@
 BUILDOUT_BIN ?= $(shell command -v buildout || echo 'bin/buildout')
+ROBOT_BROWSER ?= firefox
 
 all: build check
 
@@ -15,7 +16,7 @@ show: $(BUILDOUT_BIN)
 
 test: bin/code-analysis bin/pybot
 	bin/code-analysis
-	bin/pybot tests
+	bin/pybot -v BROWSER:$(ROBOT_BROWSER) tests
 
 watch: bin/instance
 	bin/instance fg
