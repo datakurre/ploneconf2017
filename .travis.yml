@@ -7,6 +7,7 @@ script:
 - make test
 cache:
   directories:
-  - eggs
+  - buildout-cache/eggs
+  - buildout-cache/downloads
 env:
 - ROBOT_BROWSER=phantomjs
