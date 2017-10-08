@@ -1,9 +1,19 @@
 <?xml version="1.0"?>
 <registry>
 
-  <records prefix="plone.bundles/masonry-js"
+  <records prefix="plone.bundles/imagesloaded-js"
            interface="Products.CMFPlone.interfaces.IBundleRegistry">
     <value key="depends">plone</value>
+    <value key="jscompilation">++theme++demotheme/bundles/imagesloaded.pkgd.min.js</value>
+    <value key="csscompilation">++theme++demotheme/bundles/imagesloaded.pkgd.min.css</value>
+    <value key="last_compilation">2017-10-06 00:00:00</value>
+    <value key="compile">False</value>
+    <value key="enabled">True</value>
+  </records>
+
+  <records prefix="plone.bundles/masonry-js"
+           interface="Products.CMFPlone.interfaces.IBundleRegistry">
+    <value key="depends">imagesloaded-js</value>
     <value key="jscompilation">++theme++demotheme/bundles/masonry.pkgd.min.js</value>
     <value key="csscompilation">++theme++demotheme/bundles/masonry.pkgd.min.css</value>
     <value key="last_compilation">2017-10-06 00:00:00</value>
