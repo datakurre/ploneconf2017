@@ -8,6 +8,6 @@ Suite Teardown  Browser Teardown
 
 *** Test Cases ***
 
-Test Hello World
-    Go to  ${PLONE_URL}/@@theme-fragment/hello-world
-    Page should contain  Hello World!
+Test Hall of Fame
+    Go to  ${PLONE_URL}/++themefragment++wall-of-fame
+    Page should contain element  css=.wall-of-fame

@@ -1,5 +1,47 @@
 @import "../++theme++barceloneta/less/barceloneta-compiled.css";
 
-body {
-    background: pink;
+.plone-breadcrumb ol {
+    padding: 16px 0;
+    font-size: 16px;
+}
+
+@media only screen {
+    .wall-of-fame {
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+    .wall-of-fame img {
+        float: left;
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media only screen
+    and (min-width: 768px) {
+    .wall-of-fame img {
+        float: left;
+        width: 50%;
+        height: auto;
+    }
+}
+
+@media screen
+and (min-width: 900px) {
+    .wall-of-fame img {
+        float: left;
+        width: 33.3333333%;
+        height: auto;
+    }
+}
+
+
+@media screen
+  and (min-width: 1200px) {
+    .wall-of-fame img {
+        float: left;
+        width: 25%;
+        height: auto;
+    }
 }

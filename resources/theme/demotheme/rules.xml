@@ -9,7 +9,12 @@
   <xi:include href="++theme++barceloneta/rules.xml" />
 
   <rules css:if-content="#visual-portal-wrapper">
-    <!-- Placeholder for your own additional rules -->
+
+    <!-- Make wall of fame fullwidth on Barceloneta -->
+    <replace css:theme=".outer-wrapper > .container"
+             css:content=".wall-of-fame"
+             css:if-content=".wall-of-fame" />
+
   </rules>
 
 </rules>
