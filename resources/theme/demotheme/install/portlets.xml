@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<portlets>
+  <assignment name="review-list" category="context" key="/"
+              manager="plone.rightcolumn" type="portlets.Review"
+              visible="True" />
+</portlets>

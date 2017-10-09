@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<contentrules xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+              i18n:domain="plone">
+  <rule name="rule-wof-thank-you"
+        title="Thank visitor from submission" cascading="False"
+        description="Thanks visitor after wall of fame submission" enabled="True"
+        event="zope.lifecycleevent.interfaces.IObjectAddedEvent"
+        stop-after="False">
+    <conditions>
+      <condition type="plone.conditions.PortalType">
+        <property name="check_types">
+          <element>wall_of_fame_image</element>
+        </property>
+      </condition>
+      <condition type="plone.conditions.Role">
+        <property name="role_names">
+          <element>Anonymous</element>
+        </property>
+      </condition>
+      <condition type="plone.conditions.TalesExpression">
+        <property
+            name="tales_expression">python:here.REQUEST.response.redirect(here.aq_parent.absolute_url(), lock=True)</property>
+      </condition>
+    </conditions>
+    <actions>
+      <action type="plone.actions.Notify">
+        <property name="message" i18n:translate="">Thank you for your submission! It will be reviewed soon.</property>
+        <property name="message_type">info</property>
+      </action>
+    </actions>
+  </rule>
+  <assignment name="rule-wof-thank-you" bubbles="True" enabled="True" location=""/>
+</contentrules>
