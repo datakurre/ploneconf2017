@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <object name="wall_of_fame" meta_type="Dexterity FTI" i18n:domain="plone"
         xmlns:i18n="http://xml.zope.org/namespaces/i18n">
-  <property name="title" i18n:translate="">Wall of fame</property>
+  <property name="title" i18n:translate="">Wall of Fame</property>
   <property name="description"
             i18n:translate="">Wall of approved visitor submitted images
   </property>

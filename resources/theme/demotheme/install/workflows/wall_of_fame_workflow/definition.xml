@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<dc-workflow workflow_id="wall_of_fame_workflow" title="Wall of fame workflow"
+<dc-workflow workflow_id="wall_of_fame_workflow" title="Wall of Fame workflow"
              description="- Simple workflow for visitor contributed wall of fame.
 - Things start out as pending, and can either be accept to be published on the wall, or deleted."
              state_variable="review_state" initial_state="pending"

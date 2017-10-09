@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-09-21 08:44+0000\n"
+"POT-Creation-Date: 2017-10-09 17:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,3 +13,37 @@ msgstr ""
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
+
+msgid "Close from submissions"
+msgstr "Sulje osallistuminen"
+
+#: resources/theme/demotheme/models/wall_of_fame_image.xml
+msgid "Image"
+msgstr "Kuva"
+
+msgid "Open for submissions"
+msgstr "Avaa osallistumiselle"
+
+#: resources/theme/demotheme/install/contentrules.xml
+msgid "Thank you for your submission! It will be reviewed soon."
+msgstr "Kiitos osallistumisestasi! Kuvasi tarkistetaan pian."
+
+#: resources/theme/demotheme/models/wall_of_fame_image.xml
+msgid "Title"
+msgstr "Nimike"
+
+#: resources/theme/demotheme/install/types/wall_of_fame_image.xml
+msgid "Visitor submitted image for wall of fame"
+msgstr "Kävijän kuva kuvaseinälle"
+
+#: resources/theme/demotheme/install/types/wall_of_fame.xml
+msgid "Wall of Fame"
+msgstr "Kuvaseinä"
+
+#: resources/theme/demotheme/install/types/wall_of_fame_image.xml
+msgid "Wall of Fame image"
+msgstr "Kuvaseinän kuva"
+
+#: resources/theme/demotheme/install/types/wall_of_fame.xml
+msgid "Wall of approved visitor submitted images"
+msgstr "Seinällinen käviöiden lähettämiä kuvia"

@@ -10,7 +10,7 @@
 
   <rules css:if-content="#visual-portal-wrapper">
 
-    <!-- Wall of fame -->
+    <!-- Wall of Fame -->
     <rules css:if-content=".wall-of-fame">
       <!-- Make fullwidth -->
       <replace css:theme=".outer-wrapper > .container"
