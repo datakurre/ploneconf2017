@@ -23,14 +23,14 @@
 
   <record name="plone.displayed_types">
     <value purge="false">
-      <element>wall_of_fame</element>
-      <element>wall_of_fame_image</element>
+      <element>wall_of_images</element>
+      <element>wall_of_images_image</element>
     </value>
   </record>
 
   <record name="plone.default_page_types">
     <value purge="false">
-      <element>wall_of_fame</element>
+      <element>wall_of_images</element>
     </value>
   </record>
 

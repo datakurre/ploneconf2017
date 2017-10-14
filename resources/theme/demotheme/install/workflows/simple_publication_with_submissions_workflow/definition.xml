@@ -11,7 +11,7 @@
   <permission>Modify portal content</permission>
   <permission>View</permission>
   <permission>Add portal content</permission>
-  <permission>Wall of Fame: Add Image</permission>
+  <permission>Wall of Images: Add Image</permission>
   <state state_id="open_for_submissions" title="Open for submissions">
     <description>Visible to everyone, editable by the owner. Anyone can add
       content.
@@ -23,7 +23,7 @@
     <permission-map name="Add portal content" acquired="True">
       <permission-role>Anonymous</permission-role>
     </permission-map>
-    <permission-map name="Wall of Fame: Add Image" acquired="True">
+    <permission-map name="Wall of Images: Add Image" acquired="True">
       <permission-role>Anonymous</permission-role>
     </permission-map>
     <permission-map name="Modify portal content" acquired="False">

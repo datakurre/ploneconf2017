@@ -10,15 +10,18 @@
 
   <rules css:if-content="#visual-portal-wrapper">
 
-    <!-- Wall of Fame -->
-    <rules css:if-content=".wall-of-fame">
+    <!-- Wall of Images -->
+    <rules css:if-content=".wall-of-images">
       <!-- Make fullwidth -->
       <replace css:theme=".outer-wrapper > .container"
-               css:content=".wall-of-fame" />
+               css:content=".wall-of-images" />
       <!-- Include status message -->
       <before css:theme=".outer-wrapper > .container"
               css:content="#global_statusmessage"
-              css:if-content=".wall-of-fame" />
+              css:if-content=".wall-of-images" />
+      <before css:theme=".outer-wrapper > .container"
+              css:content=".add-new-image"
+              css:if-content=".wall-of-images" />
       <replace css:content="#global_statusmessage">
         <div id="global_statusmessage" class="container-fluid">
           <xsl:apply-templates />
