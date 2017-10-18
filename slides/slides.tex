@@ -32,7 +32,7 @@
 
 % Various
 \usepackage[outline]{contour}
-\contourlength{1.75pt}
+\contourlength{2.00pt}
 \usepackage{hyperref}
 \usepackage{minted}
 
@@ -72,6 +72,7 @@
 %  \end{columns}
 %\end{frame}
 %}
+
 \begin{frame}[plain,t]
   \vspace{2em}
   \centering
@@ -122,7 +123,7 @@
   \setlength{\itemsep}{1em}
   \item Resource bundles
   \item Folderish content type
-  \item Custom view template for wall of images with Masonry.js layout
+  \item Custom view template for Wall of images with Masonry.js layout
   \item Workflow for accepting anonymous submissions
   \item Image content type for anonymous submissions
   \end{itemize}
@@ -131,15 +132,13 @@
   \begin{itemize}[<+->]
   \setlength{\itemsep}{1em}
   \item Add permission for restricting anonymous visitor submission
-  \item Content rule for signaling successful submission
+  \item Content rule for thanking about submission
   \item Review portlet for listing the pending submissions
   \item i18n with l10n message catalog
   \end{itemize}
   \end{column}
   \end{columns}
 \end{frame}
-
-\section{Introduction}
 
 \begin{frame}[plain,t]
   \frametitle{Python packages vs.\ theme?}
@@ -169,6 +168,8 @@
   \end{column}
   \end{columns}
 \end{frame}
+
+\section{Customizing Plone}
 
 \begin{frame}[plain,t]
   \frametitle{Plone customization features}
@@ -252,7 +253,7 @@
   \frametitle{Issues with Restricted Python}
   \stepcounter{beamerpauses}
   \par
-  Not only ponies an unicorns...
+  Not only ponies and unicorns...
   \par
   \vspace{0.33cm}
   \begin{itemize}[<+->]
@@ -261,7 +262,7 @@
   \item API is not always complete
   \item API is not always up-to-date
   \item API is scattered around the ecosystem
-  \item \href{https://api.plone.org/}{\texttt{plone.api}} is not currently designed or available by default to be called from RestrictedPython
+  \item \href{https://api.plone.org/}{\texttt{plone.api}} is not currently designed or available by default to be called from Restricted Python
   \end{itemize}
 \end{frame}
 
@@ -289,7 +290,7 @@
   technical debt
 \end{frame}
 
-\section{Solutions}
+\section{Advanced themes}
 
 \begin{frame}[plain,t]
   \frametitle{Advanced Plone themes}
@@ -365,6 +366,8 @@
   \par
   More iterations
 \end{frame}
+
+\section{Example}
 
 \begin{frame}[plain,c]
   \huge
@@ -639,13 +642,6 @@ jQuery(function($) {
 \end{minted}
 \end{frame}
 
-%Implement carousel as a reusable package
-%Configure carousel in
-%policy package
-%Theme carousel in
-%%theme package
-% Package and buildout
-
 \section{The End}
 
 {
@@ -659,8 +655,9 @@ jQuery(function($) {
   \lsstyle
   \contour{white}{Questions?}
   \par
-  \large
-  \contourlength{0.75pt}
+  \vspace{0.5cm}
+  \Large
+  \contourlength{1.00pt}
   \contour{white}{github.com/datakurre/ploneconf2017}
 \end{frame}
 }
