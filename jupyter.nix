@@ -24,6 +24,7 @@ let self = rec {
     '';
     propagatedBuildInputs = with python35Packages; [
       notebook
+      nbconvert
     ];
   };
   jupyter = (rise.overrideDerivation (old: {

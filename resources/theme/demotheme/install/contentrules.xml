@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <contentrules xmlns:i18n="http://xml.zope.org/namespaces/i18n"
               i18n:domain="plone">
-  <rule name="rule-wof-thank-you"
+  <rule name="rule-image-thank-you"
         title="Thank visitor from submission" cascading="False"
-        description="Thanks visitor after wall of fame submission" enabled="True"
+        description="Thanks visitor after wall of images submission" enabled="True"
         event="zope.lifecycleevent.interfaces.IObjectAddedEvent"
         stop-after="False">
     <conditions>
       <condition type="plone.conditions.PortalType">
         <property name="check_types">
-          <element>wall_of_fame_image</element>
+          <element>wall_of_images_image</element>
         </property>
       </condition>
       <condition type="plone.conditions.Role">
@@ -29,5 +29,5 @@
       </action>
     </actions>
   </rule>
-  <assignment name="rule-wof-thank-you" bubbles="True" enabled="True" location=""/>
+  <assignment name="rule-image-thank-you" bubbles="True" enabled="True" location=""/>
 </contentrules>

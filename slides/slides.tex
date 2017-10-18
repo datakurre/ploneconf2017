@@ -1,0 +1,726 @@
+\documentclass[aspectratio=43]{beamer}
+
+% Input
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,charter}
+\usepackage[letterspace=100]{microtype}
+\usepackage{textcomp}
+\usepackage{upquote}
+
+% Beamer
+\usepackage{beamercolorthemedove}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{frametitle}{\vspace{1cm}\hspace{-1pt}\insertframetitle\vspace{0.33cm}}
+\setbeamerfont{frametitle}{size=\huge,series=\bfseries}
+\setbeamerfont{normal text}{size=\normalsize,series=\bfseries}
+\setbeamertemplate{itemize item}{--}
+\setbeamertemplate{itemize subitem}{--}
+\setlength{\leftmargini}{12pt}
+\setlength{\leftmarginii}{12pt}
+\AtBeginDocument{\usebeamerfont{normal text}}
+
+% Tikz
+\definecolor{burlywood}{cmyk}{1,1,1,1}
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc,fit,positioning,shapes,chains}
+
+% Graphics
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\DeclareGraphicsExtensions{.png,.pdf,.eps}
+
+% Various
+\usepackage[outline]{contour}
+\contourlength{1.75pt}
+\usepackage{hyperref}
+\usepackage{minted}
+
+% Title
+\title{Building instant features with advanced Plone themes}
+\author{Asko Soukka <asko.soukka@iki.fi>}
+
+% Begin
+\begin{document}
+
+\section{Title}
+
+% Title
+%{
+%\usebackgroundtemplate{\includegraphics[trim=0 0 0 0,clip,width=0.5\paperwidth]{images/asko.jpg}}
+%\begin{frame}[plain,c]
+%  \begin{columns}[onlytextwidth,c]
+%    \begin{column}{0.45\textwidth}
+%    \end{column}
+%    \begin{column}{0.45\textwidth}
+%      \centering
+%      \href{http://iki.fi/asko.soukka/}{Asko Soukka},
+%      \href{mailto:asko.soukka@iki.fi}{asko.soukka@iki.fi}\\
+%      \href{https://github.com/datakure/}{github.com/datakurre}
+%      \par
+%      \vspace{1.0cm}
+%      \Huge
+%      \bfseries
+%      Instant features with advanced Plone themes
+%      \par
+%      \vspace{1.0cm}
+%      \large
+%      \mdseries
+%      \href{https://www.jyu.fi/}{\includegraphics[width=3.1cm]{images/logo.eps}}
+%      \par
+%    \end{column}
+%  \end{columns}
+%\end{frame}
+%}
+\begin{frame}[plain,t]
+  \vspace{2em}
+  \centering
+  \href{http://iki.fi/asko.soukka/}{Asko Soukka},
+  \href{mailto:asko.soukka@iki.fi}{asko.soukka@iki.fi}\\
+  \href{https://github.com/datakure/}{github.com/datakurre}
+  \par
+  \vspace{3em}
+  \Huge
+  \bfseries
+  Instant features with advanced Plone themes
+  \par
+  \vspace{2em}
+  \href{https://www.jyu.fi/}{\includegraphics[width=4cm]{images/logo.eps}}
+\end{frame}
+
+\section{Motivation}
+
+\begin{frame}[plain,c]
+  \huge
+  \bfseries
+  \centering
+  \vspace{1cm}
+  What if\ldots
+\end{frame}
+
+% one could
+
+% install Plone on cloud with just a click
+% get a simple zip file for ordered features
+% upload that zip file
+% and use the site
+
+% create wall
+% upload a lot of images
+% publish them
+
+% open the wall for submissions
+% visitors can upload submissions
+% reviewer can accept or delete submissions
+
+\begin{frame}[plain,t]
+  \frametitle{Case of the day:\ Wall of images}
+  \stepcounter{beamerpauses}
+  \begin{columns}[onlytextwidth,t]
+  \begin{column}{0.45\textwidth}
+  \begin{itemize}[<+->]
+  \setlength{\itemsep}{1em}
+  \item Resource bundles
+  \item Folderish content type
+  \item Custom view template for wall of images with Masonry.js layout
+  \item Workflow for accepting anonymous submissions
+  \item Image content type for anonymous submissions
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.45\textwidth}
+  \begin{itemize}[<+->]
+  \setlength{\itemsep}{1em}
+  \item Add permission for restricting anonymous visitor submission
+  \item Content rule for signaling successful submission
+  \item Review portlet for listing the pending submissions
+  \item i18n with l10n message catalog
+  \end{itemize}
+  \end{column}
+  \end{columns}
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}[plain,t]
+  \frametitle{Python packages vs.\ theme?}
+  \stepcounter{beamerpauses}
+  \begin{columns}[onlytextwidth,t]
+  \begin{column}{0.45\textwidth}
+  Python packages
+  \vspace{1em}
+  \begin{itemize}[<+->]
+  \setlength{\itemsep}{1em}
+  \item One package for new JS
+  \item Another for new types
+  \item Customer specific theming of components in theme package
+  \item Configuring everything in policy package
+  \item Restarting Plone
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.45\textwidth}
+  Advanced theme
+  \vspace{1em}
+  \begin{itemize}[<+->]
+  \setlength{\itemsep}{1em}
+  \item Everything in a single zipped Plone theme package
+  \item Upload through Plone control panel or using npm package
+  \href{https://www.npmjs.com/package/plonetheme-upload}{\texttt{plonetheme-upload}}
+  \end{itemize}
+  \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[plain,t]
+  \frametitle{Plone customization features}
+  \stepcounter{beamerpauses}
+  \begin{columns}[onlytextwidth,t]
+  \begin{column}{0.45\textwidth}
+  \begin{itemize}[<+->]
+  \setlength{\itemsep}{1em}
+  \item Configurable registry
+  \item Structured content types
+  \item Content type behaviors
+  \item State based workflows
+  \item Roles and permissions
+  \item All types of portlets
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.45\textwidth}
+  \begin{itemize}[<+->]
+  \setlength{\itemsep}{1em}
+  \item Content rules on events
+  \item Restricted templates
+  \item Restricted Python scripts
+  \item Static frontend resources
+  \item Diazo transform rules
+  \item \ldots
+  \end{itemize}
+  \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[plain,t]
+  \frametitle{Plone customization features}
+  \stepcounter{beamerpauses}
+  \begin{columns}[onlytextwidth,t]
+  \begin{column}{0.45\textwidth}
+  \begin{itemize}
+  \setlength{\itemsep}{1em}
+  \mdseries
+  \item Configurable registry
+  \item Structured content types
+  \item Content type behaviors
+  \item State based workflows
+  \item Roles and permissions
+  \item All types of portlets
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.45\textwidth}
+  \begin{itemize}
+  \setlength{\itemsep}{1em}
+  \mdseries
+  \item Content rules on events
+  \bfseries
+  \item Restricted templates
+  \item Restricted Python scripts
+  \mdseries
+  \item Static frontend resources
+  \item Diazo transform rules
+  \item \ldots
+  \end{itemize}
+  \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[plain,c]
+  \frametitle{Restricted Python?}
+  \Large
+  \bfseries
+  ”Restricted Python provides a safety net for programmers who don't know the details of the Zope/Plone security model.
+  \par
+  \vspace{1em}
+  It is important that you understand that the safety net is not perfect: it is not adequate to protect your site from coding by an untrusted user.”
+  \par
+  \vspace{1em}
+  \normalsize
+  \raggedleft
+  \mdseries
+  \textit{-- Steve McMahon, collectice.ambidexterity README}
+\end{frame}
+
+\begin{frame}[plain,t]
+  \frametitle{Issues with Restricted Python}
+  \stepcounter{beamerpauses}
+  \par
+  Not only ponies an unicorns...
+  \par
+  \vspace{0.33cm}
+  \begin{itemize}[<+->]
+  \setlength{\itemsep}{1em}
+  \item API is \texttt{restrictedTraversed}, not imported
+  \item API is not always complete
+  \item API is not always up-to-date
+  \item API is scattered around the ecosystem
+  \item \href{https://api.plone.org/}{\texttt{plone.api}} is not currently designed or available by default to be called from RestrictedPython
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[plain,c]
+\centering\includegraphics[trim=0 0 0 0,clip,width=0.5\paperwidth,]{images/practical-plone.jpg}
+\end{frame}
+
+\begin{frame}[plain,c]
+  \huge
+  \bfseries
+  \centering
+  \vspace{1cm}
+  Products.DocFinderTab
+\end{frame}
+
+\begin{frame}[plain,t]
+  \vspace{8em}
+  \huge
+  \bfseries
+  \centering
+  ”through-the-web”
+  \par
+  $=$
+  \par
+  technical debt
+\end{frame}
+
+\section{Solutions}
+
+\begin{frame}[plain,t]
+  \frametitle{Advanced Plone themes}
+  \stepcounter{beamerpauses}
+  \vspace{1em}
+  \begin{itemize}[<+->]
+  \setlength{\itemsep}{1em}
+  \item Theme with any supported customizations
+  \item Editable using Plone theme editor
+  \item Rollbacks with Zope2 undo form
+  \item Zip-exportable and importable from theme editor
+  \item Supports ”TTW” and ”file system" development
+  \item Exports can be version controlled
+  \item Exports can be acceptance tested
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[plain,t]
+  \frametitle{collective.themesitesetup}
+  \stepcounter{beamerpauses}
+  \begin{columns}[onlytextwidth,t]
+  \begin{column}{0.45\textwidth}
+  \begin{itemize}[<+->]
+  \setlength{\itemsep}{1em}
+  \item[] \hspace{-16pt} Theme activation or update
+  \item Imports GS profile steps
+  \item Updates DX models
+  \item Registers permissions
+  \item Registers l10m messages
+  \item Copies resources into \texttt{portal\_resources}
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.45\textwidth}
+  \begin{itemize}[<+->]
+  \setlength{\itemsep}{1em}
+  \item[] \hspace{-16pt} Theme deactivation
+  \item Imports GS profile steps
+  \item Unregisters added custom permissions
+  \item Unregisters added custom l10n messages
+  \end{itemize}
+  \begin{itemize}[<+->]
+  \setlength{\itemsep}{1em}
+  \item[] \hspace{-16pt} After ”TTW” development
+  \item \texttt{@@export-site-setup}
+  \end{itemize}
+  \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[plain,t]
+  \frametitle{collective.themefragments}
+  \stepcounter{beamerpauses}
+  \begin{itemize}[<+->]
+  \setlength{\itemsep}{1em}
+  \item[] \hspace{-16pt} View templates: \texttt{./fragments/foobar.pt}
+  \item Can be injected as fragments using Diazo rules
+  \item Can be configured as a default view for any content type
+  \item Can be used as a local view by setting \texttt{layout} attribute
+  \item[] \hspace{-16pt} Python scripts: \texttt{./fragments/foobar.py}
+  \item Can provide view methods for view templates with matching base name
+  (\texttt{tal:define="data view/getData"})
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[plain,t]
+  \vspace{8em}
+  \huge
+  \bfseries
+  \centering
+  Faster iterations
+  \par
+  $=$
+  \par
+  More iterations
+\end{frame}
+
+\begin{frame}[plain,c]
+  \huge
+  \bfseries
+  \centering
+  \vspace{1cm}
+  Let's get our hands dirty\dots
+\end{frame}
+
+\begin{frame}[plain,t]
+  \frametitle{Creating Wall of images}
+  \begin{itemize}[<+->]
+  \setlength{\itemsep}{1em}
+  \item Initial configuration was made through Plone site setup
+  \item Configuration was exported into a new theme using the export view
+  \texttt{++theme++\ldots/@@export-site-setup}
+  \item Theme was zip-exported from theming control panel
+  \item Content type schemas were exported from Dexterity editor
+  \item Development was completed on a regular file system buildout
+  using file system resources directory
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[plain,fragile,t]
+  \frametitle{Structure of Wall of images}
+  \begin{minted}[breaklines]{bash}
+./bundles/
+./fragments/
+./install/types/
+./install/workflows/
+./install/
+./locales/LC_MESSAGES/*/
+./models/
+./index.html
+./manifest.cfg
+./preview.png
+./rules.xml
+./scripts.js
+./styles.css
+  \end{minted}
+\end{frame}
+
+\begin{frame}[plain,fragile,t]
+\frametitle{Custom frontend bundles\hfill$1/2$}
+\begin{minted}[breaklines]{bash}
+./bundles/imagesloaded.pkgd.min.css
+./bundles/imagesloaded.pkgd.min.js
+./bundles/masonry.pkgd.min.css
+./bundles/masonry.pkgd.min.js
+\end{minted}
+\vspace{\lineheight}
+\begin{minted}[breaklines]{js}
+(function() { var require, define;
+// ...
+// AMD packaged JS distributions must be wrapped
+// so that Plone require.js define is undefined
+// during their load
+// ...
+})();
+\end{minted}
+\end{frame}
+
+\begin{frame}[plain,fragile,t]
+\frametitle{Custom frontend bundles\hfill$2/2$}
+\begin{minted}[breaklines]{bash}
+./install/registry.xml
+\end{minted}
+\begin{minted}[breaklines]{xml}
+<records prefix="plone.bundles/imagesloaded-js"
+         interface="...interfaces.IBundleRegistry">
+  <value key="depends">plone</value>
+  <value key="jscompilation">++theme++...js</value>
+  <value key="csscompilation">++theme++...css</value>
+  <value key="last_compilation">2017-10-06 00:00:00
+  </value>
+  <value key="compile">False</value>
+  <value key="enabled">True</value>
+</records>
+\end{minted}
+\end{frame}
+
+\begin{frame}[plain,fragile,t]
+\frametitle{Custom content types\hfill$1/2$}
+\begin{minted}[breaklines]{bash}
+./install/types/wall_of_images.xml
+./install/types/wall_of_images_image.xml
+./install/types.xml
+\end{minted}
+\begin{minted}[breaklines]{xml}
+<object name="portal_types">
+ <object name="wall_of_images"
+         meta_type="Dexterity FTI"/>
+ <object name="wall_of_images_image"
+         meta_type="Dexterity FTI"/>
+</object>
+\end{minted}
+\begin{minted}[breaklines]{bash}
+./models/wall_of_images.xml
+./models/wall_of_images_image.xml
+\end{minted}
+\end{frame}
+
+\begin{frame}[plain,fragile,t]
+\frametitle{Custom content types\hfill$2/2$}
+\begin{minted}[breaklines]{xml}
+<model xmlns:...="..." i18n:domain="plone">
+  <schema>
+    <field
+        name="title" type="zope.schema.TextLine">
+      <title i18n:translate="">Title</title>
+    </field>
+    <field
+        name="image"
+        type="plone.namedfile.field.NamedBlobImage">
+      <title i18n:translate="">Image</title>
+    </field>
+  </schema>
+</model>
+\end{minted}
+\end{frame}
+
+\begin{frame}[plain,fragile,t]
+\frametitle{Custom views\hfill$1/3$}
+\begin{minted}[breaklines]{xml}
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:...="..."
+      lang="en"
+      metal:use-macro=".../macros/master"
+      i18n:domain="plone">
+<body>
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="content-core">
+  </metal:content-core>
+</metal:main>
+</body>
+</html>
+\end{minted}
+\end{frame}
+
+\begin{frame}[plain,fragile,t]
+\frametitle{Custom views\hfill$2/3$}
+\begin{minted}[breaklines]{bash}
+./fragments/wall-of-images.pt
+\end{minted}
+\begin{minted}[breaklines]{xml}
+<div class="wall-of-images container-fluid"
+     tal:define="items context/@@contentlisting">
+  <tal:image tal:repeat="item items">
+    <img tal:define="obj item/getObject;
+        scale_func obj/@@images;
+        scaled_image python:scale_func.scale('image', scale='preview')"
+      tal:replace="structure python:scaled_image.tag()"
+      tal:on-error="string:error" />
+  </tal:image>
+</div>
+\end{minted}
+\end{frame}
+
+\begin{frame}[plain,fragile,t]
+\frametitle{Custom views\hfill$3/3$}
+\begin{minted}[breaklines]{bash}
+./install/types/wall_of_images.pt
+\end{minted}
+\begin{minted}[breaklines]{xml}
+...
+<property name="default_view">
+    ++themefragment++wall-of-images</property>
+<property name="view_methods">
+  <element value="++themefragment++wall-of-images"/>
+</property>
+...
+\end{minted}
+\vspace{0.33cm}
+Any themefragment can be configured as content object view by manually setting
+\texttt{layout} property of the content object.
+\end{frame}
+
+\begin{frame}[plain,fragile,t]
+\frametitle{Custom l10n messages}
+\begin{minted}[breaklines]{bash}
+./locales/fi/LC_MESSAGES/plone.po
+./locales/en/LC_MESSAGES/plone.po
+\end{minted}
+\vspace{0cm}
+\begin{minted}[breaklines]{po}
+msgid "Close from submissions"
+msgstr "Sulje osallistuminen"
+
+msgid "Open for submissions"
+msgstr "Avaa osallistumiselle"
+\end{minted}
+\vspace{0.25cm}
+When theme is developed on file system, normal i18n tools can be used
+for messages extraction and catalog synchronization (e.g. i18ndude).
+\end{frame}
+
+\begin{frame}[plain,fragile,t]
+\frametitle{Custom permissions}
+\begin{minted}[breaklines]{bash}
+./manifest.cfg
+\end{minted}
+\begin{minted}[breaklines]{ini}
+[theme:genericsetup]
+permissions =
+    demotheme.addImage  Wall of Images: Add Image
+\end{minted}
+\end{frame}
+
+\begin{frame}[plain,fragile,t]
+\frametitle{Custom workflows}
+\begin{minted}[breaklines]{bash}
+./install/workflows.xml
+./install/simple_publication_with_submission_workflow/
+./install/wall_of_images_workflow/
+\end{minted}
+\begin{minted}[breaklines]{xml}
+<type type_id="wall_of_images">
+  <bound-workflow workflow_id="..."/>
+</type>
+\end{minted}
+\begin{minted}[breaklines]{xml}
+<dc-workflow workflow_id="...">
+  ...
+  <permission>Wall of Images: Add Image</permission>
+  ...
+</dc-workflow>
+\end{minted}
+\end{frame}
+
+\begin{frame}[plain,fragile,t]
+\frametitle{Custom content rules}
+\begin{minted}[breaklines]{bash}
+./install/contentrules.xml
+\end{minted}
+\begin{minted}[breaklines]{xml}
+<contentrules>
+  <rule name="rule-image-thank-you"
+        title="Thank visitor from submission"
+        cascading="False"
+        description="Thanks visitor after submission"
+        event="...IObjectAddedEvent"
+        stop-after="False"
+        enabled="True">...</rule>
+  <assignment
+      name="rule-image-thank-you" bubbles="True"
+      enabled="True" location=""/>
+</contentrules>
+\end{minted}
+\end{frame}
+
+\begin{frame}[plain,fragile,t]
+\frametitle{Final touch with Diazo-bundles}
+\begin{minted}[breaklines]{bash}
+./manifest.cfg
+\end{minted}
+\begin{minted}[breaklines]{ini}
+production-css = /++theme++demotheme/styles.css
+production-js = /++theme++demotheme/scripts.js
+\end{minted}
+\begin{minted}[breaklines]{bash}
+./scripts.js
+\end{minted}
+\begin{minted}[breaklines]{js}
+jQuery(function($) {
+  $('.wall-of-images').imagesLoaded(function() {
+    $('.wall-of-images').masonry({
+      itemSelector: 'img',
+      percentPosition: true
+    });
+  });
+});
+\end{minted}
+\end{frame}
+
+%Implement carousel as a reusable package
+%Configure carousel in
+%policy package
+%Theme carousel in
+%%theme package
+% Package and buildout
+
+\section{The End}
+
+{
+\usebackgroundtemplate{\includegraphics[trim=0 0 0 0,clip,height=\paperheight]{images/questions.jpg}}%
+\begin{frame}[plain,t]
+  \setbeamercolor{background canvas}{bg=black}
+  \vfill
+  \centering
+  \Huge
+  \bfseries
+  \lsstyle
+  \contour{white}{Questions?}
+  \par
+  \large
+  \contourlength{0.75pt}
+  \contour{white}{github.com/datakurre/ploneconf2017}
+\end{frame}
+}
+
+\begin{frame}[plain,t]
+  \frametitle{What about Mosaic?}
+  \begin{itemize}
+  \setlength{\itemsep}{1em}
+  \item Theme site setup can populate Mosaic site and content layout
+  resource directories from theme
+  \item Theme fragment tile for Plone Mosaic
+  can render selected fragment with
+  \vspace{1em}
+  \begin{itemize}
+  \setlength{\itemsep}{1em}
+  \item fragment-specific readable title
+  \item fragment-specific XML schema based configuration form
+  \item fragment-specific view permission
+  \item fragment-specific caching rule
+  \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[plain,t]
+  \frametitle{What about Webpack?}
+  \begin{itemize}
+  \setlength{\itemsep}{1em}
+  \item Bundles in theme can be built with Webpack
+  \item Diazo bundle in theme can be built with Webpack
+  \item All frontend resources can be built with Webpack
+  \vspace{1em}
+  \begin{itemize}
+  \setlength{\itemsep}{1em}
+  \item \href{https://github.com/collective/plonetheme.webpacktemplate}{\texttt{plonetheme.webpacktemplate}}
+  \item \href{https://www.npmjs.com/package/plonetheme-webpack-plugin}{\texttt{plonetheme-webpack-plugin}}
+  \item \href{https://www.npmjs.com/package/plonetheme-upload}{\texttt{plonetheme-upload}}
+  \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[plain,fragile,t]
+\frametitle{Bonus: Custom JS widgets}
+\begin{minted}[breaklines]{bash}
+./models/my_content_type.xml
+\end{minted}
+\begin{minted}[breaklines]{xml}
+...
+<field name="focuspoint"
+       type="zope.schema.BytesLine">
+  <form:widget
+      type="z3c.form.browser.text.TextFieldWidget">
+    <klass>text-widget pat-focuspoint-widget</klass>
+  </form:widget>
+  <title i18n:translate="">Image focus point</title>
+  <required>false</required>
+</field>
+...
+\end{minted}
+\end{frame}
+\end{frame}
+
+\end{document}

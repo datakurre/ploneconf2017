@@ -18,3 +18,23 @@
 /selenium-screenshot-*.png
 /*.zip
 
+.DS_Store
+*.aux
+*.egg-info
+*.fdb_latexmk
+*.fls
+*.fs
+*.fs.*
+*.log
+*.nav
+*.out
+*.pdf
+*.pyc
+*.snm
+*.toc
+*.vrb
+/.idea/
+/.ipynb_checkpoints/
+/.jupyter/
+/icons
+_minted-*/
