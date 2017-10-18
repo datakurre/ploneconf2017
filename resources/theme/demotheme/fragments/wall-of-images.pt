@@ -10,7 +10,9 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="content-core">
     <div class="container-fluid add-new-image"
-         tal:define="checkPermission nocall:context/portal_membership/checkPermission;
+         tal:define="portal_state context/@@plone_portal_state;
+                     portal portal_state/portal;
+                     checkPermission nocall:portal/portal_membership/checkPermission;
                      canAdd python:checkPermission('Wall of Images: Add Image', context)"
          tal:condition="canAdd">
       <p>

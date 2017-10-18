@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-10-17 15:35+0000\n"
+"POT-Creation-Date: 2017-10-18 14:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,22 @@ msgstr ""
 msgid "Close from submissions"
 msgstr "Sulje osallistuminen"
 
-#: resources/theme/demotheme/models/wall_of_fame_image.xml
+#: resources/theme/demotheme/models/wall_of_images_image.xml
 msgid "Image"
 msgstr "Kuva"
 
 msgid "Open for submissions"
 msgstr "Avaa osallistumiselle"
 
+#: resources/theme/demotheme/fragments/wall-of-images.pt:19
+msgid "Submit new image"
+msgstr "Ehdota uutta kuvaa"
+
 #: resources/theme/demotheme/install/contentrules.xml
 msgid "Thank you for your submission! It will be reviewed soon."
 msgstr "Kiitos osallistumisestasi! Kuvasi tarkastetaan pian."
 
-#: resources/theme/demotheme/models/wall_of_fame_image.xml
+#: resources/theme/demotheme/models/wall_of_images_image.xml
 msgid "Title"
 msgstr "Nimike"
 

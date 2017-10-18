@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-10-17 15:35+0000\n"
+"POT-Creation-Date: 2017-10-18 14:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,22 @@ msgstr ""
 msgid "Close from submissions"
 msgstr ""
 
-#: resources/theme/demotheme/models/wall_of_fame_image.xml
+#: resources/theme/demotheme/models/wall_of_images_image.xml
 msgid "Image"
 msgstr ""
 
 msgid "Open for submissions"
 msgstr ""
 
+#: resources/theme/demotheme/fragments/wall-of-images.pt:19
+msgid "Submit new image"
+msgstr ""
+
 #: resources/theme/demotheme/install/contentrules.xml
 msgid "Thank you for your submission! It will be reviewed soon."
 msgstr ""
 
-#: resources/theme/demotheme/models/wall_of_fame_image.xml
+#: resources/theme/demotheme/models/wall_of_images_image.xml
 msgid "Title"
 msgstr ""
 
