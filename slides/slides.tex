@@ -418,7 +418,6 @@
 ./bundles/masonry.pkgd.min.css
 ./bundles/masonry.pkgd.min.js
 \end{minted}
-\vspace{\lineheight}
 \begin{minted}[breaklines]{js}
 (function() { var require, define;
 // ...
@@ -574,6 +573,17 @@ for messages extraction and catalog synchronization (e.g. i18ndude).
 permissions =
     demotheme.addImage  Wall of Images: Add Image
 \end{minted}
+\begin{minted}[breaklines]{bash}
+./install/types/wall_of_images_image.xml
+\end{minted}
+\begin{minted}[breaklines]{xml}
+<object name="wall_of_images_image" ...="..">
+  ...
+  <property name="add_permission">
+      demotheme.addImage</property>
+  ...
+</object>
+\end{minted}
 \end{frame}
 
 \begin{frame}[plain,fragile,t]
@@ -717,7 +727,6 @@ jQuery(function($) {
 </field>
 ...
 \end{minted}
-\end{frame}
 \end{frame}
 
 \end{document}
